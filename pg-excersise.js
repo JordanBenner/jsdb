@@ -2,7 +2,8 @@ var pgp = require('bluebird');
 var pgp = require('pg-promise')({
   promiseLib: promise
 });
-// var db = pgp({database: 'jsdb'});
+
+var db = pgp({database: 'jsdb'});
 
 db.query('SELECT * FROM restaurant')
   .then(function (results)) {
