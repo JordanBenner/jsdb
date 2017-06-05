@@ -29,12 +29,35 @@ db.query('SELECT * FROM restaurant')
 
 
 // injection //
-var name = 'big belly burger';
-var query = INSERT INTO restaurant \
-  VALUES(default, '${name}')`;
+// var name = 'big belly burger';
+// var query = INSERT INTO restaurant \
+//   VALUES(default, '${name}')`;
+//
+// console.log(query);
+// db.result(query)
+// .then(function)(result){
+//   console.log(result);
+// });
+
+//sanatise
+var q = "INSERT INTO restaurant VALUES (default, $1)";
+var name = "Big Belly Burger'; DROP TABLE restaurant; --";
 
 console.log(query);
-db.result(query)
-.then(function)(result){
-  console.log(result);
-});
+db.result(q, name)
+  .then(function (result) {
+    console.log(result);
+    pgb.end();
+  });
+
+// sanatise two
+var biz = {name: "Lard Lad Donuts, address: 123 somewhere"};
+var q = "INSERT INTO restaurant \
+  VALUES (default, ${name})";
+
+  console.log(query);
+db.result(q, biz)
+  .then(function (result) {
+    console.log(result);
+    pgb.end();
+  });
