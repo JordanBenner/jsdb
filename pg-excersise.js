@@ -15,6 +15,10 @@ db.query('SELECT * FROM restaurant')
   })
   .then(funtion (row){
     consol.log(row);
+    db.result("INSERT INTO restaurant VALUES (default, 'Narf')");
+  })
+  .then(function (result){
+    console.log(result);
   })
   catch(function(error){
     console.error(error);
