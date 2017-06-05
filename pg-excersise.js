@@ -26,3 +26,15 @@ db.query('SELECT * FROM restaurant')
 .finally(functioh(){
   pgp.end();
 });
+
+
+// injection //
+var name = 'big belly burger';
+var query = INSERT INTO restaurant \
+  VALUES(default, '${name}')`;
+
+console.log(query);
+db.result(query)
+.then(function)(result){
+  console.log(result);
+});
